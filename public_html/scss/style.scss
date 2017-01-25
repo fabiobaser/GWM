@@ -1,0 +1,691 @@
+@import "../bourbon/bourbon";
+
+@import "../partials/menu";
+
+@import "../partials/variables";
+
+@import "../partials/layout";
+
+
+@import "../partials/mixins";
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body, main, section {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Inconsolata', monospace;
+    color: #141417;
+    background: #FAFAFA;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+a:-webkit-any-link{
+    text-decoration:none !important;
+}
+
+// Sections
+
+section {
+
+    div {
+        width: 100%;
+        padding-top: 40px;
+        margin-bottom: 100px;
+        text-align: center;
+        margin-top: 0;
+        position: relative;
+
+    }
+
+    .sectionNumber {
+        font-family: $primary-font;;
+        font-weight: 100;
+        padding-right: 50px;
+        font-size: 150px;
+        color: rgba(0,0,0,0.3);
+    }
+
+    .sectionName {
+        font-family: $primary-font;
+        font-size: 40px;
+        font-weight: 900;
+        text-shadow: 0px 3px 5px rgba(50, 50, 50, 0.3);
+        text-transform: uppercase;
+
+        position: absolute;
+        bottom: 0;
+        @include center(x);
+        @include transform(translateX(-20px));
+    }
+}
+
+.fixedHeadline {
+    position: fixed;
+    z-index: 100;
+    left: 3vw;
+    top: 3vw;
+    padding: 0;
+    margin: 0;
+    margin-top: -4px;
+    color: #262626;
+    opacity: 0;
+    font-size: 23px;
+    font-family: 'Impact', sans-serif;
+    text-transform: uppercase;
+    transition: all .5s ease-in-out;
+
+    span {
+        font-family: 'Helvetica Neue', sans-serif;
+        font-size: 18px;
+    }
+
+    a {
+        color: #262626;
+        cursor: pointer;
+    }
+}
+
+
+.cd-intro {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    /* vertically align its content */
+    display: table;
+    background: $color-2;
+    overflow: hidden;
+}
+
+.cd-intro-content {
+    /* vertically align inside its parent */
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 5%;
+    margin-top: 0;
+    background: $color-2;
+
+    h1 {
+        font-size: 2.4rem;
+        color: $color-3;
+    }
+
+    p {
+        font-size: 1.4rem;
+        font-weight: 700;
+        line-height: 1.4;
+        margin: 1em 0;
+        color: tint($color-2, 30%);
+    }
+
+    .action-wrapper {
+        @include clearfix;
+        display: inline-block;
+    }
+
+    .action-wrapper > * {
+        float: left;
+    }
+
+    @include MQ(M) {
+
+        h1 {
+            font-size: 5.2rem;
+            font-weight: 300;
+        }
+
+        p {
+            font-size: 1.6rem;
+            margin: 1.5em 0 1.9em;
+        }
+    }
+}
+
+.cd-intro.video {
+    display: block;
+}
+
+.video.cd-intro-content {
+    display: block;
+    height: 100%;
+    position: relative;
+
+    * {
+        opacity: 1;
+    }
+
+    .svg-wrapper {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+    }
+
+    svg {
+        position: absolute;
+        @include center;
+        opacity: 0.8;
+
+        &.svg-mask {
+            /* this is the svg mask used on desktop version */
+            display: none;
+        }
+    }
+
+    p, .action-wrapper {
+        position: absolute;
+        z-index: 3;
+        left: 50%;
+        @include transform(translate(-50%, -50%));
+    }
+
+    p {
+        bottom: calc(50% + 80px);
+        margin: 0;
+        color: $color-1;
+        min-width: 90%;
+    }
+
+    .action-wrapper {
+        top: calc(50% + 120px);
+        min-width: 295px;
+    }
+
+    .cd-btn {
+        background-color: rgba($color-1, .4);
+
+        &.main-action {
+            background-color: $color-4;
+        }
+    }
+
+    @include MQ(M) {
+
+        svg.svg-mask-mobile {
+            display: none;
+        }
+
+        svg.svg-mask {
+            display: block;
+        }
+
+        p {
+            bottom: calc(50% + 40px);
+        }
+
+        .action-wrapper {
+            top: calc(50% + 80px);
+        }
+    }
+}
+
+.cd-bg-video-wrapper {
+    /* background cover video */
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    overflow: hidden;
+    background: url(../assets/bg-img.jpg) no-repeat center center;
+    background-size: cover;
+
+    video {
+        /* you won't see this element in the html, but it will be injected using js */
+        display: block;
+        position: absolute;
+        @include center;
+        min-height: 100%;
+        min-width: 100%;
+        max-width: none;
+        height: auto;
+        width: auto;
+    }
+
+    &::after {
+        /* never visible - this is used in jQuery to check the current MQ */
+        display: none;
+        content: 'mobile';
+    }
+
+    @include MQ(M) {
+
+        &::after {
+            content: 'desktop';
+        }
+    }
+}
+
+
+
+// Team
+.content {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+
+// Contact
+
+.contactSection {
+    min-height: 100%;
+}
+
+.contactButtonWrapper {
+    padding: 0;
+    margin: 0;
+    height: 500px;
+
+    a {
+        color: #141417;
+
+    }
+
+    a:hover > .contactLeft {
+        box-shadow: $box-shadow2;
+    }
+
+    a:hover > .contactLeft > .contactIcon {
+        box-shadow: $box-shadow2;
+    }
+
+    a:hover > .contactRight {
+        box-shadow: $box-shadow2;
+    }
+
+    a:hover > .contactRight > .contactIcon {
+        box-shadow: $box-shadow2;
+    }
+
+    .contactLeftWrapper {
+        display: inline-block;
+        width: 30%;
+        margin: 0;
+        padding: 0;
+
+        .contactLeft {
+            padding: 0;
+            margin: 0;
+            margin-right: 60px;
+            background: white;
+            height: 60px;
+            width: 500px;
+
+            box-shadow: $box-shadow1;
+
+            transition: all .3s ease-in-out;
+
+            margin-bottom: 20px;
+            margin-top: 20px;
+
+            &:last-child {
+                margin-bottom: 0px;
+                margin-top: 20px;
+            }
+
+            &:first-child {
+                margin-bottom: 20px;
+                margin-top: 0px;
+            }
+
+            .contactText {
+                padding: 0;
+                margin: 0;
+                @include center(y);
+                text-align: right;
+                padding-right: 40px;
+            }
+
+            .contactIcon {
+                padding: 0;
+                margin: 0;
+                background: #363636;
+                height: 60px;
+                width: 60px;
+                position: absolute;
+                right: -60px;
+                top: 0;
+
+                box-shadow: $box-shadow1;
+
+                transition: all .3s ease-in-out;
+                i {
+                    font-size: 25px;
+                    line-height: 60px;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .contactRightWrapper {
+        display: inline-block;
+        width: 30%;
+        margin: 0;
+        padding: 0;
+
+        .contactRight {
+            padding: 0;
+            margin: 0;
+            margin-left: 60px;
+            background: white;
+            height: 60px;
+            width: 500px;
+
+            box-shadow: $box-shadow1;
+
+            transition: all .3s ease-in-out;
+
+            margin-bottom: 20px;
+            margin-top: 20px;
+
+            &:last-child {
+                margin-bottom: 0px;
+                margin-top: 20px;
+            }
+
+            &:first-child {
+                margin-bottom: 20px;
+                margin-top: 0px;
+            }
+
+            .contactText {
+                padding: 0;
+                margin: 0;
+                @include center(y);
+                text-align: left;
+                padding-left: 40px;
+            }
+
+            .contactIcon {
+                padding: 0;
+                margin: 0;
+                background: #363636;
+                height: 60px;
+                width: 60px;
+                position: absolute;
+                left: -60px;
+                top: 0;
+
+                box-shadow: $box-shadow1;
+
+                transition: all .3s ease-in-out;
+
+                i {
+                    font-size: 25px;
+                    line-height: 60px;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.siteEnd {
+    background: #363636;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+
+    h1 {
+        font-family: 'Impact', sans-serif;
+        font-size: 10vw;
+        color: white;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 200px;
+
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            color: $pink;
+        }
+
+        &:hover > span {
+            color: white;
+        }
+
+
+
+        span {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 6vw;
+            transition: all .3s ease-in-out;
+        }
+    }
+
+    ul {
+
+        padding-top: 50px;
+        padding-bottom: 100px;
+
+        li {
+            display: inline-block;
+
+            a {
+                color: white;
+                margin-left: 10px;
+                margin-right: 10px;
+                font-size: 25px;
+            }
+        }
+    }
+}
+
+// Arbeit
+
+.grid {
+    position: relative;
+    clear: both;
+    margin: 0 auto;
+    padding: 1em 0 4em;
+    max-width: 1030px;
+    list-style: none;
+    text-align: center;
+
+    h1 {
+        padding-left: 0.5em;
+        font-size: 22px;
+        text-align: left;
+        font-family: $primary-font;
+        font-weight: 300;
+        line-height: 100px;
+    }
+}
+
+/* Common style */
+.grid figure {
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px 1%;
+    min-width: 320px;
+    max-width: 300px;
+    max-height: 360px;
+    width: 48%;
+    height: auto;
+    background: #FF0066;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: $box-shadow2;
+
+}
+
+.grid figure img {
+    position: relative;
+    display: block;
+    min-height: 100%;
+    max-width: 100%;
+    opacity: 0.8;
+    filter: brightness(50%);
+}
+
+.grid figure figcaption {
+    padding: 2em;
+    color: #fff;
+    font-family: $primary-font;
+    text-transform: uppercase;
+    font-size: 1.25em;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.grid figure figcaption::before,
+.grid figure figcaption::after {
+    pointer-events: none;
+}
+
+.grid figure figcaption,
+.grid figure figcaption > a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Anchor will cover the whole item by default */
+/* For some effects it will show as a button */
+.grid figure figcaption > a {
+    z-index: 1000;
+    text-indent: 200%;
+    white-space: nowrap;
+    font-size: 0;
+    opacity: 0;
+}
+
+.grid figure h2 {
+    word-spacing: -0.15em;
+    font-weight: 300;
+}
+
+.grid figure h2 span {
+    font-weight: 800;
+}
+
+.grid figure h2,
+.grid figure p {
+    margin: 0;
+}
+
+.grid figure p {
+    letter-spacing: 1px;
+    font-size: 68.5%;
+    text-transform: none;
+}
+
+/*-----------------*/
+/***** Apollo *****/
+/*-----------------*/
+
+figure.effect-apollo {
+    background: #E74c3c;
+}
+
+figure.effect-apollo img {
+    opacity: 0.95;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale3d(1.05,1.05,1);
+    transform: scale3d(1.05,1.05,1);
+}
+
+figure.effect-apollo figcaption::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.5);
+    content: '';
+    -webkit-transition: -webkit-transform 0.6s;
+    transition: transform 0.6s;
+    -webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+    transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+}
+
+figure.effect-apollo p {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 3em;
+    padding: 0 1em;
+    max-width: 350px;
+    font-size: 12px;
+    border-right: 4px solid #fff;
+    text-align: right;
+    opacity: 0;
+    -webkit-transition: opacity 0.35s;
+    transition: opacity 0.35s;
+}
+
+figure.effect-apollo h2 {
+    text-align: left;
+}
+
+figure.effect-apollo:hover img {
+    opacity: 0.6;
+    -webkit-transform: scale3d(1,1,1);
+    transform: scale3d(1,1,1);
+}
+
+figure.effect-apollo:hover figcaption::before {
+    -webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+    transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+}
+
+figure.effect-apollo:hover p {
+    opacity: 1;
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+}
+
+// About
+.aboutContent {
+    width: 50%;
+    @include center(x);
+    text-align: left;
+    font-family: $primary-font;
+
+    h1 {
+        color: rgb(50,50,50);
+    }
+
+    .bigLetter {
+        font-size: 120%;
+    }
+
+    a {
+        background: rgba(#FF0066, 0.6);
+        color: white;
+        padding-left: 5px;
+        padding-right: 5px;
+        -webkit-font-smoothing: subpixel;
+    }
+}
