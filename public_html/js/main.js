@@ -144,6 +144,8 @@
         };
     };
 
+
+
     /**
      * Reveal animation. If revealSettings is passed, then it will overwrite the options.revealSettings.
      */
