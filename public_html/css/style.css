@@ -14,21 +14,21 @@ All rights reserved 2016
   margin: 0 auto; }
 
 /* Buttons */
-.btn {
+.gwm_menuBtn {
   border: 0;
   padding: 0;
   margin: 0;
   background: none;
   color: inherit; }
-  .btn img {
+  .gwm_menuBtn img {
     width: 30px;
     filter: invert(0%);
     transition: all .5s ease-in-out; }
 
-.btn:focus {
+.gwm_menuBtn:focus {
   outline: 0; }
 
-.btn--menu {
+.gwm_menuOpen {
   position: fixed;
   z-index: 100;
   top: 3vw;
@@ -36,7 +36,7 @@ All rights reserved 2016
   color: #939391;
   pointer-events: visible; }
 
-.btn--close {
+.gwm_menuClose {
   position: absolute;
   top: 3vw;
   right: 3vw;
@@ -62,7 +62,7 @@ All rights reserved 2016
 .js .menu--open {
   pointer-events: visible; }
 
-.menu__inner {
+.gwm_menuInner {
   position: absolute;
   top: 0;
   left: 0;
@@ -75,39 +75,39 @@ All rights reserved 2016
   overflow: hidden;
   text-transform: uppercase; }
 
-.menu__item {
+.gwm_menuItem {
   padding: 0.15em; }
 
-.js .menu__item {
+.js .gwm_menuItem {
   transform: translate3d(-13em, 0, 0);
   transition: transform 0s 0.4s; }
 
-.btn--close {
+.gwm_menuClose {
   opacity: 0; }
 
-.menu--open .menu__item,
-.menu--open .btn--close {
+.menu--open .gwm_menuItem,
+.menu--open .gwm_menuClose {
   opacity: 1;
   transform: translate3d(0, 0, 0);
   transition: opacity 0.4s 0.135s, transform 0.4s 0.135s cubic-bezier(0.645, 0.045, 0.355, 1); }
 
-.menu--open .menu__item:nth-child(2) {
+.menu--open .gwm_menuItem:nth-child(2) {
   transition-delay: 0.165s; }
 
-.menu--open .menu__item:nth-child(3) {
+.menu--open .gwm_menuItem:nth-child(3) {
   transition-delay: 0.195s; }
 
-.menu--open .menu__item:nth-child(4) {
+.menu--open .gwm_menuItem:nth-child(4) {
   transition-delay: 0.225s; }
 
-.menu .menu__link {
+.menu .gwm_menuLink {
   font-size: 4em;
   color: #FAFAFA;
   font-weight: bold;
   font-family: 'Poppins', sans-serif; }
 
-.menu .menu__link:hover,
-.menu .menu__link:focus {
+.menu .gwm_menuLink:hover,
+.menu .gwm_menuLink:focus {
   outline: none;
   color: #000; }
 
@@ -203,7 +203,7 @@ section .sectionName {
     color: #262626;
     cursor: pointer; }
 
-.cd-intro {
+.gwm_landingSection {
   position: relative;
   height: 100vh;
   width: 100%;
@@ -212,7 +212,7 @@ section .sectionName {
   background: #c03b44;
   overflow: hidden; }
 
-.cd-intro-content {
+.gwm_landingSection_content {
   /* vertically align inside its parent */
   display: table-cell;
   vertical-align: middle;
@@ -220,41 +220,41 @@ section .sectionName {
   padding: 0 5%;
   margin-top: 0;
   background: #c03b44; }
-  .cd-intro-content h1 {
+  .gwm_landingSection_content h1 {
     font-size: 2.4rem;
     color: #ffffff; }
-  .cd-intro-content p {
+  .gwm_landingSection_content p {
     font-size: 1.4rem;
     font-weight: 700;
     line-height: 1.4;
     margin: 1em 0;
     color: #d3767c; }
-  .cd-intro-content .action-wrapper {
+  .gwm_landingSection_content .action-wrapper {
     display: inline-block; }
-    .cd-intro-content .action-wrapper::after {
+    .gwm_landingSection_content .action-wrapper::after {
       clear: both;
       content: "";
       display: table; }
-  .cd-intro-content .action-wrapper > * {
+  .gwm_landingSection_content .action-wrapper > * {
     float: left; }
   @media only screen and (min-width: 768px) {
-    .cd-intro-content h1 {
+    .gwm_landingSection_content h1 {
       font-size: 5.2rem;
       font-weight: 300; }
-    .cd-intro-content p {
+    .gwm_landingSection_content p {
       font-size: 1.6rem;
       margin: 1.5em 0 1.9em; } }
 
-.cd-intro.video {
+.gwm_landingSection.video {
   display: block; }
 
-.video.cd-intro-content {
+.video.gwm_landingSection_content {
   display: block;
   height: 100%;
   position: relative; }
-  .video.cd-intro-content * {
+  .video.gwm_landingSection_content * {
     opacity: 1; }
-  .video.cd-intro-content .svg-wrapper {
+  .video.gwm_landingSection_content .gwm_landingSection_svgWrapper {
     position: absolute;
     z-index: 2;
     top: 0;
@@ -262,7 +262,7 @@ section .sectionName {
     height: 100%;
     width: 100%;
     margin: 0; }
-  .video.cd-intro-content svg {
+  .video.gwm_landingSection_content svg {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -274,10 +274,10 @@ section .sectionName {
     -o-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
     opacity: 0.8; }
-    .video.cd-intro-content svg.svg-mask {
+    .video.gwm_landingSection_content svg.svg-mask {
       /* this is the svg mask used on desktop version */
       display: none; }
-  .video.cd-intro-content p, .video.cd-intro-content .action-wrapper {
+  .video.gwm_landingSection_content p, .video.gwm_landingSection_content .action-wrapper {
     position: absolute;
     z-index: 3;
     left: 50%;
@@ -286,29 +286,29 @@ section .sectionName {
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
-  .video.cd-intro-content p {
+  .video.gwm_landingSection_content p {
     bottom: calc(50% + 80px);
     margin: 0;
     color: #303e49;
     min-width: 90%; }
-  .video.cd-intro-content .action-wrapper {
+  .video.gwm_landingSection_content .action-wrapper {
     top: calc(50% + 120px);
     min-width: 295px; }
-  .video.cd-intro-content .cd-btn {
+  .video.gwm_landingSection_content .cd-btn {
     background-color: rgba(48, 62, 73, 0.4); }
-    .video.cd-intro-content .cd-btn.main-action {
+    .video.gwm_landingSection_content .cd-btn.main-action {
       background-color: #75ce66; }
   @media only screen and (min-width: 768px) {
-    .video.cd-intro-content svg.svg-mask-mobile {
+    .video.gwm_landingSection_content svg.svg-mask-mobile {
       display: none; }
-    .video.cd-intro-content svg.svg-mask {
+    .video.gwm_landingSection_content svg.svg-mask {
       display: block; }
-    .video.cd-intro-content p {
+    .video.gwm_landingSection_content p {
       bottom: calc(50% + 40px); }
-    .video.cd-intro-content .action-wrapper {
+    .video.gwm_landingSection_content .action-wrapper {
       top: calc(50% + 80px); } }
 
-.cd-bg-video-wrapper {
+.gwm_landingSection_videoWrapper {
   /* background cover video */
   position: absolute;
   z-index: 1;
@@ -320,7 +320,7 @@ section .sectionName {
   overflow: hidden;
   background: url(../assets/bg-img.jpg) no-repeat center center;
   background-size: cover; }
-  .cd-bg-video-wrapper video {
+  .gwm_landingSection_videoWrapper video {
     /* you won't see this element in the html, but it will be injected using js */
     display: block;
     position: absolute;
@@ -338,12 +338,12 @@ section .sectionName {
     max-width: none;
     height: auto;
     width: auto; }
-  .cd-bg-video-wrapper::after {
+  .gwm_landingSection_videoWrapper::after {
     /* never visible - this is used in jQuery to check the current MQ */
     display: none;
     content: 'mobile'; }
   @media only screen and (min-width: 768px) {
-    .cd-bg-video-wrapper::after {
+    .gwm_landingSection_videoWrapper::after {
       content: 'desktop'; } }
 
 .content {

@@ -17,7 +17,7 @@ All rights reserved 2016
 
 
 /* Buttons */
-.btn {
+.gwm_menuBtn {
     border: 0;
     padding: 0;
     margin: 0;
@@ -31,11 +31,11 @@ All rights reserved 2016
     }
 }
 
-.btn:focus {
+.gwm_menuBtn:focus {
     outline: 0;
 }
 
-.btn--menu {
+.gwm_menuOpen {
     position: fixed;
     z-index: 100;
     top: 3vw;
@@ -44,7 +44,7 @@ All rights reserved 2016
     pointer-events: visible;
 }
 
-.btn--close {
+.gwm_menuClose {
     position: absolute;
     top: 3vw;
     right: 3vw;
@@ -76,7 +76,7 @@ All rights reserved 2016
     pointer-events: visible;
 }
 
-.menu__inner {
+.gwm_menuInner {
     position: absolute;
     top: 0;
     left: 0;
@@ -90,47 +90,47 @@ All rights reserved 2016
     text-transform: uppercase;
 }
 
-.menu__item {
+.gwm_menuItem {
     padding: 0.15em;
 }
 
-.js .menu__item {
+.js .gwm_menuItem {
     transform: translate3d(-13em,0,0);
     transition: transform 0s 0.4s;
 }
 
-.btn--close {
+.gwm_menuClose {
     opacity: 0;
 }
 
-.menu--open .menu__item,
-.menu--open .btn--close {
+.menu--open .gwm_menuItem,
+.menu--open .gwm_menuClose {
     opacity: 1;
     transform: translate3d(0,0,0);
     transition: opacity 0.4s 0.135s, transform 0.4s 0.135s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.menu--open .menu__item:nth-child(2) {
+.menu--open .gwm_menuItem:nth-child(2) {
     transition-delay: 0.165s;
 }
 
-.menu--open .menu__item:nth-child(3) {
+.menu--open .gwm_menuItem:nth-child(3) {
     transition-delay: 0.195s;
 }
 
-.menu--open .menu__item:nth-child(4) {
+.menu--open .gwm_menuItem:nth-child(4) {
     transition-delay: 0.225s;
 }
 
-.menu .menu__link {
+.menu .gwm_menuLink {
     font-size: 4em;
     color: #FAFAFA;
     font-weight: bold;
     font-family: 'Poppins', sans-serif;
 }
 
-.menu .menu__link:hover,
-.menu .menu__link:focus {
+.menu .gwm_menuLink:hover,
+.menu .gwm_menuLink:focus {
     outline: none;
     color: #000;
 }

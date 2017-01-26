@@ -227,9 +227,9 @@
 (function () {
     var navEl = document.querySelector('nav.menu'),
             revealer = new RevealFx(navEl),
-            closeCtrl = navEl.querySelector('.btn--close');
+            closeCtrl = navEl.querySelector('.gwm_menuClose');
 
-    document.querySelector('.btn--menu').addEventListener('click', function () {
+    document.querySelector('.gwm_menuOpen').addEventListener('click', function () {
         revealer.reveal({
             bgcolor: '#6600FF',
             duration: 400,
@@ -270,9 +270,9 @@ jQuery(document).ready(function ($) {
 
 
 
-    if ($('.cd-bg-video-wrapper').length > 0) {
-        var videoWrapper = $('.cd-bg-video-wrapper'),
-                mq = window.getComputedStyle(document.querySelector('.cd-bg-video-wrapper'), '::after').getPropertyValue('content').replace(/"/g, "").replace(/'/g, "");
+    if ($('.gwm_landingSection_videoWrapper').length > 0) {
+        var videoWrapper = $('.gwm_landingSection_videoWrapper'),
+                mq = window.getComputedStyle(document.querySelector('.gwm_landingSection_videoWrapper'), '::after').getPropertyValue('content').replace(/"/g, "").replace(/'/g, "");
         // we are not on a mobile device
         var videoUrl = videoWrapper.data('video'),
                 video = $('<video loop><source src="' + videoUrl + '.mp4" type="video/mp4" /><source src="' + videoUrl + '.webm" type="video/webm" /></video>');
