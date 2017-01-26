@@ -1,0 +1,183 @@
+/*
+Created by Fabio Baser
+All rights reserved 2016
+*/
+/*
+    Created on : 26.01.2017, 14:49:45
+    Author     : fabiobaser
+*/
+
+.gwm_landingSection {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    /* vertically align its content */
+    display: table;
+    background: $color-2;
+    overflow: hidden;
+}
+
+.gwm_landingSection_content {
+    /* vertically align inside its parent */
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 5%;
+    margin-top: 0;
+    background: $color-2;
+
+    h1 {
+        font-size: 2.4rem;
+        color: $color-3;
+    }
+
+    p {
+        font-size: 1.4rem;
+        font-weight: 700;
+        line-height: 1.4;
+        margin: 1em 0;
+        color: tint($color-2, 30%);
+    }
+
+    .action-wrapper {
+        @include clearfix;
+        display: inline-block;
+    }
+
+    .action-wrapper > * {
+        float: left;
+    }
+
+    @include MQ(M) {
+
+        h1 {
+            font-size: 5.2rem;
+            font-weight: 300;
+        }
+
+        p {
+            font-size: 1.6rem;
+            margin: 1.5em 0 1.9em;
+        }
+    }
+}
+
+.gwm_landingSection.video {
+    display: block;
+}
+
+.video.gwm_landingSection_content {
+    display: block;
+    height: 100%;
+    position: relative;
+
+    * {
+        opacity: 1;
+    }
+
+    .gwm_landingSection_svgWrapper {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+    }
+
+    svg {
+        position: absolute;
+        @include center;
+        opacity: 0.8;
+
+        &.svg-mask {
+            /* this is the svg mask used on desktop version */
+            display: none;
+        }
+    }
+
+    p, .action-wrapper {
+        position: absolute;
+        z-index: 3;
+        left: 50%;
+        @include transform(translate(-50%, -50%));
+    }
+
+    p {
+        bottom: calc(50% + 80px);
+        margin: 0;
+        color: $color-1;
+        min-width: 90%;
+    }
+
+    .action-wrapper {
+        top: calc(50% + 120px);
+        min-width: 295px;
+    }
+
+    .cd-btn {
+        background-color: rgba($color-1, .4);
+
+        &.main-action {
+            background-color: $color-4;
+        }
+    }
+
+    @include MQ(M) {
+
+        svg.svg-mask-mobile {
+            display: none;
+        }
+
+        svg.svg-mask {
+            display: block;
+        }
+
+        p {
+            bottom: calc(50% + 40px);
+        }
+
+        .action-wrapper {
+            top: calc(50% + 80px);
+        }
+    }
+}
+
+.gwm_landingSection_videoWrapper {
+    /* background cover video */
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    overflow: hidden;
+    background: url(../assets/bg-img.jpg) no-repeat center center;
+    background-size: cover;
+
+    video {
+        /* you won't see this element in the html, but it will be injected using js */
+        display: block;
+        position: absolute;
+        @include center;
+        min-height: 100%;
+        min-width: 100%;
+        max-width: none;
+        height: auto;
+        width: auto;
+    }
+
+    &::after {
+        /* never visible - this is used in jQuery to check the current MQ */
+        display: none;
+        content: 'mobile';
+    }
+
+    @include MQ(M) {
+
+        &::after {
+            content: 'desktop';
+        }
+    }
+}
