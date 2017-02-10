@@ -1,129 +1,6 @@
 @font-face {
   font-family: 'Impact', sans-serif;
   src: url("../fonts/Impact.ttf"); }
-/*
-Created by Fabio Baser
-All rights reserved 2016
-*/
-/*
-    Created on : 19.01.2017, 11:53:52
-    Author     : fabiobaser
-*/
-/* Icons */
-.icon {
-  display: block;
-  width: 1.5em;
-  height: 1.5em;
-  margin: 0 auto; }
-
-/* Buttons */
-.gwm_menuBtn {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  background: none;
-  color: inherit; }
-  .gwm_menuBtn img {
-    width: 30px;
-    filter: invert(0%);
-    transition: all .5s ease-in-out; }
-
-.gwm_menuBtn:focus {
-  outline: 0; }
-
-.gwm_menuOpen {
-  position: fixed;
-  z-index: 100;
-  top: 3vw;
-  right: 3vw;
-  color: #939391;
-  pointer-events: visible; }
-
-.gwm_menuClose {
-  position: absolute;
-  top: 3vw;
-  right: 3vw;
-  font-size: 0.75em;
-  z-index: 100; }
-
-/* Menu */
-.menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 400px;
-  z-index: 100; }
-  .menu a {
-    text-decoration: none;
-    color: #000;
-    outline: none; }
-
-.js .menu {
-  pointer-events: none; }
-
-.js .menu--open {
-  pointer-events: visible; }
-
-.gwm_menuInner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  list-style-type: none;
-  padding: 20vh 3em;
-  margin: 0;
-  background: #FF0066;
-  overflow: hidden;
-  text-transform: uppercase; }
-
-.gwm_menuItem {
-  padding: 0.15em; }
-
-.js .gwm_menuItem {
-  transform: translate3d(-13em, 0, 0);
-  transition: transform 0s 0.4s; }
-
-.gwm_menuClose {
-  opacity: 0; }
-
-.menu--open .gwm_menuItem,
-.menu--open .gwm_menuClose {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-  transition: opacity 0.4s 0.135s, transform 0.4s 0.135s cubic-bezier(0.645, 0.045, 0.355, 1); }
-
-.menu--open .gwm_menuItem:nth-child(2) {
-  transition-delay: 0.165s; }
-
-.menu--open .gwm_menuItem:nth-child(3) {
-  transition-delay: 0.195s; }
-
-.menu--open .gwm_menuItem:nth-child(4) {
-  transition-delay: 0.225s; }
-
-.menu .gwm_menuLink {
-  font-size: 4em;
-  color: #FAFAFA;
-  font-weight: bold;
-  font-family: 'Poppins', sans-serif; }
-
-.menu .gwm_menuLink:hover,
-.menu .gwm_menuLink:focus {
-  outline: none;
-  color: #000; }
-
-.block-revealer__element {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  pointer-events: none;
-  opacity: 0; }
-
 /* --------------------------------
 
 Primary style
@@ -147,13 +24,13 @@ body {
 a {
   color: #acb7c0;
   text-decoration: none;
-  font-family: "Bitter", serif; }
+  font-family: "Poppins", serif; }
 
 img {
   max-width: 100%; }
 
-h1, h2 {
-  font-family: "Bitter", serif;
+h1, header h2, h2 {
+  font-family: "Poppins", serif;
   font-weight: bold; }
 
 /* --------------------------------
@@ -161,12 +38,12 @@ h1, h2 {
 Modules - reusable parts of our design
 
 -------------------------------- */
-.gwm-container {
+.fb-container {
   /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
   width: 90%;
   max-width: 1170px;
   margin: 0 auto; }
-  .gwm-container::after {
+  .fb-container::after {
     /* clearfix */
     content: '';
     display: table;
@@ -179,27 +56,41 @@ Main components
 -------------------------------- */
 header {
   height: 200px;
-  line-height: 200px;
   text-align: center;
-  background: #303e49; }
-  header h1 {
+  background: #303e49;
+  position: relative; }
+  header h1, header h2 {
     color: #ffffff;
-    font-size: 18px;
-    font-size: 1.125rem; }
+    font-size: 22px;
+    font-size: 1.375rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em; }
+  header h2 {
+    font-size: 12px;
+    font-size: 0.75rem; }
   @media only screen and (min-width: 1170px) {
     header {
-      height: 300px;
-      line-height: 300px; }
-      header h1 {
+      height: 300px; }
+      header h1, header h2 {
         font-size: 24px;
         font-size: 1.5rem; } }
 
-#gwm-timeline {
+#fb-timeline {
   position: relative;
   padding: 2em 0;
   margin-top: 2em;
   margin-bottom: 2em; }
-  #gwm-timeline::before {
+  #fb-timeline::before {
     /* this is the vertical line */
     content: '';
     position: absolute;
@@ -209,33 +100,33 @@ header {
     width: 4px;
     background: #d7e4ed; }
   @media only screen and (min-width: 1170px) {
-    #gwm-timeline {
+    #fb-timeline {
       margin-top: 3em;
       margin-bottom: 3em; }
-      #gwm-timeline::before {
+      #fb-timeline::before {
         left: 50%;
         margin-left: -2px; } }
 
-.gwm-timeline-block {
+.fb-timeline-block {
   position: relative;
   margin: 2em 0; }
-  .gwm-timeline-block::after {
+  .fb-timeline-block::after {
     clear: both;
     content: "";
     display: table; }
-  .gwm-timeline-block:first-child {
+  .fb-timeline-block:first-child {
     margin-top: 0; }
-  .gwm-timeline-block:last-child {
+  .fb-timeline-block:last-child {
     margin-bottom: 0; }
   @media only screen and (min-width: 1170px) {
-    .gwm-timeline-block {
+    .fb-timeline-block {
       margin: 4em 0; }
-      .gwm-timeline-block:first-child {
+      .fb-timeline-block:first-child {
         margin-top: 0; }
-      .gwm-timeline-block:last-child {
+      .fb-timeline-block:last-child {
         margin-bottom: 0; } }
 
-.gwm-timeline-img {
+.fb-timeline-img {
   position: absolute;
   top: 0;
   left: 0;
@@ -243,7 +134,7 @@ header {
   height: 40px;
   border-radius: 50%;
   box-shadow: 0 0 0 4px #ffffff, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05); }
-  .gwm-timeline-img img {
+  .fb-timeline-img img {
     display: block;
     width: 24px;
     height: 24px;
@@ -252,14 +143,14 @@ header {
     top: 50%;
     margin-left: -12px;
     margin-top: -12px; }
-  .gwm-timeline-img.gwm-picture {
+  .fb-timeline-img.fb-picture {
     background: #75ce66; }
-  .gwm-timeline-img.gwm-movie {
+  .fb-timeline-img.fb-movie {
     background: #c03b44; }
-  .gwm-timeline-img.gwm-location {
+  .fb-timeline-img.fb-location {
     background: #f0ca45; }
   @media only screen and (min-width: 1170px) {
-    .gwm-timeline-img {
+    .fb-timeline-img {
       width: 60px;
       height: 60px;
       left: 50%;
@@ -267,15 +158,15 @@ header {
       /* Force Hardware Acceleration in WebKit */
       -webkit-transform: translateZ(0);
       -webkit-backface-visibility: hidden; }
-      .cssanimations .gwm-timeline-img.is-hidden {
+      .cssanimations .fb-timeline-img.is-hidden {
         visibility: hidden; }
-      .cssanimations .gwm-timeline-img.bounce-in {
+      .cssanimations .fb-timeline-img.bounce-in {
         visibility: visible;
-        -webkit-animation: gwm-bounce-1 0.6s;
-        -moz-animation: gwm-bounce-1 0.6s;
-        animation: gwm-bounce-1 0.6s; } }
+        -webkit-animation: fb-bounce-1 0.6s;
+        -moz-animation: fb-bounce-1 0.6s;
+        animation: fb-bounce-1 0.6s; } }
 
-@-webkit-keyframes gwm-bounce-1 {
+@-webkit-keyframes fb-bounce-1 {
   0% {
     opacity: 0;
     -webkit-transform: scale(0.5); }
@@ -284,7 +175,7 @@ header {
     -webkit-transform: scale(1.2); }
   100% {
     -webkit-transform: scale(1); } }
-@-moz-keyframes gwm-bounce-1 {
+@-moz-keyframes fb-bounce-1 {
   0% {
     opacity: 0;
     -moz-transform: scale(0.5); }
@@ -293,7 +184,7 @@ header {
     -moz-transform: scale(1.2); }
   100% {
     -moz-transform: scale(1); } }
-@keyframes gwm-bounce-1 {
+@keyframes fb-bounce-1 {
   0% {
     opacity: 0;
     -webkit-transform: scale(0.5);
@@ -314,40 +205,40 @@ header {
     -ms-transform: scale(1);
     -o-transform: scale(1);
     transform: scale(1); } }
-.gwm-timeline-content {
+.fb-timeline-content {
   position: relative;
   margin-left: 60px;
   background: #ffffff;
   border-radius: 0.25em;
   padding: 1em;
   box-shadow: 0 3px 0 #d7e4ed; }
-  .gwm-timeline-content::after {
+  .fb-timeline-content::after {
     clear: both;
     content: "";
     display: table; }
-  .gwm-timeline-content h2 {
+  .fb-timeline-content h2 {
     color: #303e49; }
-  .gwm-timeline-content p, .gwm-timeline-content .gwm-read-more, .gwm-timeline-content .gwm-date {
+  .fb-timeline-content p, .fb-timeline-content .fb-read-more, .fb-timeline-content .fb-date {
     font-size: 13px;
     font-size: 0.8125rem; }
-  .gwm-timeline-content .gwm-read-more, .gwm-timeline-content .gwm-date {
+  .fb-timeline-content .fb-read-more, .fb-timeline-content .fb-date {
     display: inline-block; }
-  .gwm-timeline-content p {
+  .fb-timeline-content p {
     margin: 1em 0;
     line-height: 1.6; }
-  .gwm-timeline-content .gwm-read-more {
+  .fb-timeline-content .fb-read-more {
     float: right;
     padding: .8em 1em;
     background: #acb7c0;
     color: #ffffff;
     border-radius: 0.25em; }
-    .no-touch .gwm-timeline-content .gwm-read-more:hover {
+    .no-touch .fb-timeline-content .fb-read-more:hover {
       background-color: #bac4cb; }
-  .gwm-timeline-content .gwm-date {
+  .fb-timeline-content .fb-date {
     float: left;
     padding: .8em 0;
     opacity: .7; }
-  .gwm-timeline-content::before {
+  .fb-timeline-content::before {
     content: '';
     position: absolute;
     top: 16px;
@@ -357,63 +248,63 @@ header {
     border: 7px solid transparent;
     border-right: 7px solid #ffffff; }
   @media only screen and (min-width: 768px) {
-    .gwm-timeline-content h2 {
+    .fb-timeline-content h2 {
       font-size: 20px;
       font-size: 1.25rem; }
-    .gwm-timeline-content p {
+    .fb-timeline-content p {
       font-size: 16px;
       font-size: 1rem; }
-    .gwm-timeline-content .gwm-read-more, .gwm-timeline-content .gwm-date {
+    .fb-timeline-content .fb-read-more, .fb-timeline-content .fb-date {
       font-size: 14px;
       font-size: 0.875rem; } }
   @media only screen and (min-width: 1170px) {
-    .gwm-timeline-content {
+    .fb-timeline-content {
       margin-left: 0;
       padding: 1.6em;
       width: 45%; }
-      .gwm-timeline-content::before {
+      .fb-timeline-content::before {
         top: 24px;
         left: 100%;
         border-color: transparent;
         border-left-color: #ffffff; }
-      .gwm-timeline-content .gwm-read-more {
+      .fb-timeline-content .fb-read-more {
         float: left; }
-      .gwm-timeline-content .gwm-date {
+      .fb-timeline-content .fb-date {
         position: absolute;
         width: 100%;
         left: 122%;
         top: 6px;
         font-size: 16px;
         font-size: 1rem; }
-      .gwm-timeline-block:nth-child(even) .gwm-timeline-content {
+      .fb-timeline-block:nth-child(even) .fb-timeline-content {
         float: right; }
-        .gwm-timeline-block:nth-child(even) .gwm-timeline-content::before {
+        .fb-timeline-block:nth-child(even) .fb-timeline-content::before {
           top: 24px;
           left: auto;
           right: 100%;
           border-color: transparent;
           border-right-color: #ffffff; }
-        .gwm-timeline-block:nth-child(even) .gwm-timeline-content .gwm-read-more {
+        .fb-timeline-block:nth-child(even) .fb-timeline-content .fb-read-more {
           float: right; }
-        .gwm-timeline-block:nth-child(even) .gwm-timeline-content .gwm-date {
+        .fb-timeline-block:nth-child(even) .fb-timeline-content .fb-date {
           left: auto;
           right: 122%;
           text-align: right; }
-      .cssanimations .gwm-timeline-content.is-hidden {
+      .cssanimations .fb-timeline-content.is-hidden {
         visibility: hidden; }
-      .cssanimations .gwm-timeline-content.bounce-in {
+      .cssanimations .fb-timeline-content.bounce-in {
         visibility: visible;
-        -webkit-animation: gwm-bounce-2 0.6s;
-        -moz-animation: gwm-bounce-2 0.6s;
-        animation: gwm-bounce-2 0.6s; } }
+        -webkit-animation: fb-bounce-2 0.6s;
+        -moz-animation: fb-bounce-2 0.6s;
+        animation: fb-bounce-2 0.6s; } }
 
 @media only screen and (min-width: 1170px) {
   /* inverse bounce effect on even content blocks */
-  .cssanimations .gwm-timeline-block:nth-child(even) .gwm-timeline-content.bounce-in {
-    -webkit-animation: gwm-bounce-2-inverse 0.6s;
-    -moz-animation: gwm-bounce-2-inverse 0.6s;
-    animation: gwm-bounce-2-inverse 0.6s; } }
-@-webkit-keyframes gwm-bounce-2 {
+  .cssanimations .fb-timeline-block:nth-child(even) .fb-timeline-content.bounce-in {
+    -webkit-animation: fb-bounce-2-inverse 0.6s;
+    -moz-animation: fb-bounce-2-inverse 0.6s;
+    animation: fb-bounce-2-inverse 0.6s; } }
+@-webkit-keyframes fb-bounce-2 {
   0% {
     opacity: 0;
     -webkit-transform: translateX(-100px); }
@@ -422,7 +313,7 @@ header {
     -webkit-transform: translateX(20px); }
   100% {
     -webkit-transform: translateX(0); } }
-@-moz-keyframes gwm-bounce-2 {
+@-moz-keyframes fb-bounce-2 {
   0% {
     opacity: 0;
     -moz-transform: translateX(-100px); }
@@ -431,7 +322,7 @@ header {
     -moz-transform: translateX(20px); }
   100% {
     -moz-transform: translateX(0); } }
-@keyframes gwm-bounce-2 {
+@keyframes fb-bounce-2 {
   0% {
     opacity: 0;
     -webkit-transform: translateX(-100px);
@@ -452,7 +343,7 @@ header {
     -ms-transform: translateX(0);
     -o-transform: translateX(0);
     transform: translateX(0); } }
-@-webkit-keyframes gwm-bounce-2-inverse {
+@-webkit-keyframes fb-bounce-2-inverse {
   0% {
     opacity: 0;
     -webkit-transform: translateX(100px); }
@@ -461,7 +352,7 @@ header {
     -webkit-transform: translateX(-20px); }
   100% {
     -webkit-transform: translateX(0); } }
-@-moz-keyframes gwm-bounce-2-inverse {
+@-moz-keyframes fb-bounce-2-inverse {
   0% {
     opacity: 0;
     -moz-transform: translateX(100px); }
@@ -470,7 +361,7 @@ header {
     -moz-transform: translateX(-20px); }
   100% {
     -moz-transform: translateX(0); } }
-@keyframes gwm-bounce-2-inverse {
+@keyframes fb-bounce-2-inverse {
   0% {
     opacity: 0;
     -webkit-transform: translateX(100px);
