@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Die Dokumentation der "Groessenwahn.Media" Website
 
 You can use the [editor on GitHub](https://github.com/Teslon/GWM/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
